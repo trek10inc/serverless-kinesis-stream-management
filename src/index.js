@@ -9,8 +9,26 @@ class KinesisStream {
 
     resources() {
         return [{test: 'thing'}];
+        // kinesis stream
+        // optional firehose
+        // s3 bucket(?) perhaps move this out to its own thing
     }
 }
+
+/****
+ * Example Configs
+ * custom:
+ *   kinesis-streams:
+ *     defaults: (optional global overrides)
+ *     streams:
+ *       - name: MyStream (required)
+ *         archiveBucket: (optional)
+ *         archive: true (optional)
+ *         encryption: false (optional)
+ *         key: alias/aws/kinesis (optional)
+ *         retention: 24 (optional)
+ *         shardCount: 1 (optional)
+ ***/
 
 class KinesisStreamManager {
     constructor(serverless, options) {
