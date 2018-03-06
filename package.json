@@ -1,0 +1,17 @@
+{
+  "name": "serverless-kinesis-stream-management",
+  "version": "0.0.1",
+  "description": "Manage kinesis streams without all the CloudFormation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "serverless",
+    "cloudformation",
+    "kinesis",
+    "event-streams"
+  ],
+  "author": "Jared Short <jshort@trek10.com>",
+  "license": "MIT"
+}
