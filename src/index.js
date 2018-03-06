@@ -65,6 +65,7 @@ class KinesisStreamManager {
 
         streams.forEach(stream =>
             stream.resources().forEach(resource => {
+                // Test with CloudFormation overrides
                 _.merge(
                     this.serverless.service.provider
                         .compiledCloudFormationTemplate.Resources,
