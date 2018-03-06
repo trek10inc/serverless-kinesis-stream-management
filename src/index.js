@@ -20,12 +20,18 @@ class KinesisStream {
  * custom:
  *   kinesis-streams:
  *     defaults: (optional global overrides)
+ *       archiveBucket: {RandomlyNamedByCFN}
+ *       archive: false
+ *       encryption: true
+ *       encryptionKey: alias/aws/kms
+ *       retention: 24
+ *       shardCount: 1
  *     streams:
  *       - name: MyStream (required)
  *         archiveBucket: (optional)
  *         archive: true (optional)
  *         encryption: false (optional)
- *         key: alias/aws/kinesis (optional)
+ *         encryptionKey: alias/aws/kinesis (optional)
  *         retention: 24 (optional)
  *         shardCount: 1 (optional)
  ***/
