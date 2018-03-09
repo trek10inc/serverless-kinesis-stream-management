@@ -1,7 +1,7 @@
 {
   "name": "serverless-kinesis-stream-management",
   "version": "0.0.1",
-  "description": "Manage kinesis streams without all the CloudFormation",
+  "description": "Manage kinesis streams without all the CloudFormation pain",
   "main": "src/index.js",
   "scripts": {
     "precommit": "lint-staged && npm run test",
