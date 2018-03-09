@@ -17,6 +17,32 @@ Each particular stream can support around 5 lambda subscribers before throttling
 
 **NOTE:** If you are using the archive option of this plugin, you are limited to FOUR (4) lambda subscribers as the Kinesis Firehose will take one of your five slots.
 
+## Configuration
+
+```yaml
+# serverless.yml
+
+# Example Configs
+  custom:
+    kinesisStreams:
+      defaults: # optional global overrides
+        archiveBucket: # default: randomly named by cfn
+        archive: false
+        encryption: true
+        encryptionKey: alias/aws/kms
+        retention: 24
+        shardCount: 1
+        archiveTransformNewlines: false
+      streams:
+        - name: MyStream (required)
+          archiveBucket: # optional (and currently unsupported)
+          archive: false # optional
+          keyId: alias/aws/kinesis # optional
+          retention: 24 # optional
+          shardCount: 1 # optional
+          archiveTransformNewlines: false # optional
+```
+
 ## Future
 
 In the future we hope to automate more of the operations, including intelligent auto-scaling of shards and potentially managed replication of streams as the subscriber interest grows against a particular stream.
