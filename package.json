@@ -1,38 +1,37 @@
 {
-  "name": "serverless-kinesis-stream-management",
-  "version": "0.0.1",
-  "description": "Manage kinesis streams without all the CloudFormation pain",
-  "main": "src/index.js",
-  "scripts": {
-    "precommit": "lint-staged && npm run test",
-    "test": "jest test"
-  },
-  "lint-staged": {
-    "src/**/*.{js,json,css}": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "keywords": [
-    "serverless",
-    "cloudformation",
-    "kinesis",
-    "event-streams"
-  ],
-  "author": "Jared Short <jshort@trek10.com>",
-  "license": "MIT",
-  "dependencies": {
-    "lodash": "^4.17.5"
-  },
-  "devDependencies": {
-    "eslint": "^4.18.2",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-jest": "^21.13.0",
-    "eslint-plugin-prettier": "^2.6.0",
-    "husky": "^0.14.3",
-    "jest": "^22.4.2",
-    "lint-staged": "^7.0.0",
-    "prettier": "^1.11.1"
-  }
+    "name": "serverless-kinesis-stream-management",
+    "version": "0.0.1",
+    "description": "Manage kinesis streams without all the CloudFormation pain",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/trek10inc/serverless-kinesis-stream-management"
+    },
+    "main": "src/index.js",
+    "scripts": {
+        "precommit": "lint-staged && npm run test",
+        "test": "jest test"
+    },
+    "lint-staged": {
+        "src/**/*.{js,json,css}": [
+            "eslint --fix",
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "keywords": ["serverless", "cloudformation", "kinesis", "event-streams"],
+    "author": "Jared Short <jshort@trek10.com>",
+    "license": "MIT",
+    "dependencies": {
+        "lodash": "^4.17.5"
+    },
+    "devDependencies": {
+        "eslint": "^4.18.2",
+        "eslint-config-prettier": "^2.9.0",
+        "eslint-plugin-jest": "^21.13.0",
+        "eslint-plugin-prettier": "^2.6.0",
+        "husky": "^0.14.3",
+        "jest": "^22.4.2",
+        "lint-staged": "^7.0.0",
+        "prettier": "^1.11.1"
+    }
 }
