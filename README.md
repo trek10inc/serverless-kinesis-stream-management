@@ -3,6 +3,11 @@
 [![npm](https://img.shields.io/npm/v/serverless-kinesis-stream-management.svg)](https://www.npmjs.com/package/serverless-kinesis-stream-management)
 [![license](https://img.shields.io/github/license/trek10inc/serverless-kinesis-stream-management.svg)](https://github.com/trek10inc/serverless-kinesis-stream-management/blob/master/LICENSE.md)
 
+## Example Single Managed Stream
+
+![single event stream with archival](https://user-images.githubusercontent.com/1689118/37218740-60b06966-238f-11e8-9ddd-19ec6ed136c4.jpg)
+
+
 ## About the plugin
 
 **HIGHLY EXPERIMENTAL AND WILL CHANGE.** We are building this strictly to meet our own needs, but are willing to consider and accommodate others if it betters the overall plugin!
