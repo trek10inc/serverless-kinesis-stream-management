@@ -18,7 +18,12 @@
             "git add"
         ]
     },
-    "keywords": ["serverless", "cloudformation", "kinesis", "event-streams"],
+    "keywords": [
+        "serverless",
+        "cloudformation",
+        "kinesis",
+        "event-streams"
+    ],
     "author": "Jared Short <jshort@trek10.com>",
     "license": "MIT",
     "dependencies": {

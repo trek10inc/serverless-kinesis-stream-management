@@ -6,6 +6,7 @@ class KinesisStream {
     constructor(stream, defaults) {
         this.stream = stream;
         this.defaults = defaults;
+        this.stream.cleanName = this.__sanitizeName(this.stream.name);
         this.config = _.merge(
             {
                 retention: 24,
@@ -47,7 +48,7 @@ class KinesisStream {
             });
         }
 
-        resources[`${this.config.name}KinesisStream`] = streamResource;
+        resources[`${this.config.cleanName}KinesisStream`] = streamResource;
         return resources;
     }
 
@@ -181,11 +182,13 @@ class KinesisStream {
         const firehoseResource = {
             Type: 'AWS::KinesisFirehose::DeliveryStream',
             Properties: {
-                DeliveryStreamName: `${this.config.name}KinesisFirehose`,
+                DeliveryStreamName: `${this.config.cleanName}KinesisFirehose`,
                 DeliveryStreamType: 'KinesisStreamAsSource',
                 KinesisStreamSourceConfiguration: {
                     KinesisStreamARN: {
-                        'Fn::Sub': `\${${this.config.name}KinesisStream.Arn}`,
+                        'Fn::Sub': `\${${
+                            this.config.cleanName
+                        }KinesisStream.Arn}`,
                     },
                     RoleARN: {'Fn::Sub': '${FirehoseIAMRole.Arn}'},
                 },
@@ -200,10 +203,10 @@ class KinesisStream {
                     CloudWatchLoggingOptions: {
                         Enabled: true,
                         LogGroupName: {Ref: 'FirehoseCloudWatchLogs'},
-                        LogStreamName: this.config.name,
+                        LogStreamName: this.config.cleanName,
                     },
                     CompressionFormat: 'GZIP',
-                    Prefix: `${this.config.name}Stream/`,
+                    Prefix: `${this.config.name}/`,
                     RoleARN: {'Fn::Sub': '${FirehoseIAMRole.Arn}'},
                 },
             },
@@ -327,8 +330,15 @@ class KinesisStream {
             );
         }
 
-        resources[`${this.config.name}KinesisFirehose`] = firehoseResource;
+        resources[`${this.config.cleanName}KinesisFirehose`] = firehoseResource;
         return resources;
+    }
+
+    __sanitizeName(name) {
+        let sanitizedName = name.replace(/([-|_|.]\w)/g, function(m) {
+            return m[1].toUpperCase();
+        });
+        return sanitizedName.charAt(0).toUpperCase() + sanitizedName.slice(1);
     }
 }
 
@@ -361,9 +371,7 @@ class KinesisStreamManager {
         this.options = options;
         this.cli = this.serverless.cli;
         this.hooks = {
-            'before:package:compileFunctions': this.beforeCompileFunctions.bind(
-                this
-            ),
+            'before:package:finalize': this.beforeCompileFunctions.bind(this),
         };
     }
 
