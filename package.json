@@ -1,6 +1,6 @@
 {
     "name": "serverless-kinesis-stream-management",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "Manage kinesis streams without all the CloudFormation pain",
     "repository": {
         "type": "git",
